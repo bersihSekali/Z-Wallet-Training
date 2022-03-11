@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextView">
+
+    </style>
+
+    <style name="TextView.SplashScreen">
+        <item name="android:textSize">32dp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="TextView.SplashScreen.Slogan">
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="TextView.SplashScreen.Description">
+        <item name="android:fontFamily">@font/nunito_font</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextView.firstSizeText">
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="TextView.secondSizeText">
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    <style name="TextView.thirdSizeText">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="TextView.fourthSizeText">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="TextView.fifthSizeText">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TextView.sixthSizeText">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="TextView.Medium">
+        <item name="android:fontFamily">@font/nunito_font_medium</item>
+    </style>
+
+    <style name="RoundCornerOverLay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="EditText" />
+
+    <style name="EditText.Input">
+        <item name="android:fontFamily">@font/nunito_font</item>
+        <item name="android:textColorHint">@color/darkGrey</item>
+        <item name="android:textColor">@color/darkGrey</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+</resources>

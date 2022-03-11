@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <LinearLayout
+        android:id="@+id/greetings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:background="@drawable/bacground_item_transaction_home"
+        android:layout_margin="15dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundCornerOverLay"
+            android:src="@drawable/sample"/>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp">
+
+            <TextView
+                android:id="@+id/textHello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                style="@style/TextView.fourthSizeText"
+                android:gravity="center"
+                android:textColor="@color/mainTextColor"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/textUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Klin Agusta Hernandi"
+                style="@style/TextView.fourthSizeText"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:drawableStart="@drawable/ic_baseline_notifications_none_24"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statusHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_balanced_home"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/greetings">
+        <TextView
+            android:id="@+id/textBalanced"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balanced"
+            style="@style/TextView.sixthSizeText"
+            android:paddingTop="10dp"
+            android:layout_gravity="start"
+            android:textColor="#DFDCDC"
+            android:paddingStart="13dp"/>
+
+        <TextView
+            android:id="@+id/textAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp10.000"
+            style="@style/TextView.firstSizeText"
+            android:layout_gravity="start"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingStart="13dp"/>
+
+        <TextView
+            android:id="@+id/textPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+6282219441030"
+            style="@style/TextView.sixthSizeText"
+            android:layout_gravity="start"
+            android:textColor="#DFDCDC"
+            android:paddingVertical="10dp"
+            android:paddingStart="13dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusHome"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer"
+            style="@style/TextView.fourthSizeText"
+            android:background="@drawable/background_button_trasnfer_topup"
+            android:drawableStart="@drawable/ic_baseline_arrow_upward_24"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:layout_weight="1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Up"
+            style="@style/TextView.fourthSizeText"
+            android:background="@drawable/background_button_trasnfer_topup"
+            android:drawableStart="@drawable/ic_baseline_add_24"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/transactionHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction History"
+        style="@style/TextView.fourthSizeText"
+        android:textColor="@color/mainTextColor"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/viewAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All"
+        style="@style/TextView.sixthSizeText"
+        android:textColor="@color/primaryColor"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTransaction"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/transactionHistory"
+        android:layout_margin="10dp"
+        tools:listitem="@layout/list_transaction_home"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
