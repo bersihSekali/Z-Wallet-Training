@@ -1,4 +1,4 @@
-package com.bersih.zwallet.ui.main
+package com.bersih.zwallet.ui
 
 import android.content.Intent
 import android.content.SharedPreferences

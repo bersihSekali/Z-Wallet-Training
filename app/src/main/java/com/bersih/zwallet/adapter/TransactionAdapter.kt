@@ -8,9 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bersih.zwallet.R
 import com.bersih.zwallet.data.Transaction
+import com.bersih.zwallet.model.GetInvoice
+import com.bersih.zwallet.model.GetUserDetail
+import com.bersih.zwallet.utils.BASE_URL
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.imageview.ShapeableImageView
 
-class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>(){
+class TransactionAdapter(private var data: List<GetInvoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>(){
     lateinit var contextAdapter: Context
     class TransactionAdapterHolder(view: View): RecyclerView.ViewHolder(view) {
         private val image: ShapeableImageView = view.findViewById(R.id.imageTransaction)
@@ -18,11 +23,17 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
         private val type: TextView = view.findViewById(R.id.textTransactionType)
         private val amount: TextView = view.findViewById(R.id.textTransactionAmount)
 
-        fun bindData(data: Transaction, context: Context, position: Int){
-            name.text = data.transactionName
-            type.text = data.transactionType
-            amount.text = data.transactionNominal.toString()
-            image.setImageDrawable(data.transactionImg)
+        fun bindData(data: GetInvoice, context: Context, position: Int){
+            name.text = data.name
+            type.text = data.type
+            amount.text = data.amount.toString()
+            Glide.with(image)
+                .load(BASE_URL + data.image)
+                .apply(
+                    RequestOptions.circleCropTransform()
+                        .placeholder(R.drawable.ic_baseline_broken_image_24)
+                )
+                .into(image)
         }
     }
 
@@ -40,5 +51,9 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
 
     override fun getItemCount(): Int {
         return this.data.size
+    }
+
+    fun addData(data: List<GetInvoice>) {
+        this.data = data
     }
 }

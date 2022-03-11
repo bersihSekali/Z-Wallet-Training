@@ -16,4 +16,5 @@
     <string name="slogans">Make easy your payment</string>
     <string name="dontHaveAccount">Don\'t have an Account?</string>
     <string name="signUp">Sign Up</string>
+    <string name="personalProfileDesc">We got your personal information from the sign up process. If you want to make changes on your information, contact our support</string>
 </resources>

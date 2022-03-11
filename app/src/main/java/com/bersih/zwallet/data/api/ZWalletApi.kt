@@ -1,6 +1,7 @@
 package com.bersih.zwallet.data.api
 
 import com.bersih.zwallet.model.ApiResponse
+import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.model.GetUserDetail
 import com.bersih.zwallet.model.User
 import com.bersih.zwallet.model.request.GetUserDetailRequest
@@ -14,13 +15,16 @@ import retrofit2.http.POST
 
 interface ZWalletApi {
     @POST("auth/login")
-    fun login(@Body request: LoginRequest): Call<ApiResponse<User>>
+    suspend fun login(@Body request: LoginRequest): ApiResponse<User>
 
     @POST("auth/signup")
     fun register(@Body request: RegisterRequest): Call<ApiResponse<String>>
 
     @GET("home/getBalance")
-    fun getUserDetail(): Call<ApiResponse<List<GetUserDetail>>>
+    suspend fun getUserDetail(): ApiResponse<List<GetUserDetail>>
+
+    @GET("home/getInvoice")
+    suspend fun getInvoice(): ApiResponse<List<GetInvoice>>
 
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<ApiResponse<User>>

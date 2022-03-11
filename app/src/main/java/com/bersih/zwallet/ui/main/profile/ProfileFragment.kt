@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bersih.zwallet.databinding.FragmentProfileBinding
-import com.bersih.zwallet.ui.main.SplashScreenActivity
+import com.bersih.zwallet.ui.SplashScreenActivity
 import com.bersih.zwallet.utils.KEY_LOGGED_IN
 import com.bersih.zwallet.utils.PREFS_NAME
 

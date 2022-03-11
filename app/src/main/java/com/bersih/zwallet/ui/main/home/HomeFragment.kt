@@ -1,8 +1,6 @@
 package com.bersih.zwallet.ui.main.home
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,26 +12,23 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bersih.zwallet.R
 import com.bersih.zwallet.adapter.TransactionAdapter
-import com.bersih.zwallet.data.Transaction
-import com.bersih.zwallet.databinding.ActivityMainBinding
 import com.bersih.zwallet.databinding.FragmentHomeBinding
 import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.GetUserDetail
-import com.bersih.zwallet.model.request.GetUserDetailRequest
 import com.bersih.zwallet.network.NetworkConfig
-import com.bersih.zwallet.utils.KEY_LOGGED_IN
-import com.bersih.zwallet.utils.PREFS_NAME
+import com.bersih.zwallet.ui.viewModelsFactory
+import com.bersih.zwallet.utils.*
+import com.bersih.zwallet.utils.Helper.formatPrice
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.prefs.Preferences
 import javax.net.ssl.HttpsURLConnection
 
 class HomeFragment : Fragment() {
-    private val transactionData = mutableListOf<Transaction>()
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var binding: FragmentHomeBinding
     private lateinit var prefs : SharedPreferences
+    private val viewModel: HomeViewModel by viewModelsFactory { HomeViewModel(requireActivity().application) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,34 +43,6 @@ class HomeFragment : Fragment() {
 
         prefs = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
 
-        NetworkConfig(context).getService().getUserDetail()
-            .enqueue(object: Callback<ApiResponse<List<GetUserDetail>>> {
-            override fun onResponse(
-                call: Call<ApiResponse<List<GetUserDetail>>>,
-                response: Response<ApiResponse<List<GetUserDetail>>>
-            ) {
-                if (response.body()?.status != HttpsURLConnection.HTTP_OK) {
-                    Toast.makeText(context, "Fetch detail data failed", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    val res = response.body()?.data?.get(0)
-                    binding.textUsername.text = "${res?.name}"
-                    binding.textAmount.text = "${res?.balance}"
-                    binding.textPhone.text = "${res?.phone}"
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResponse<List<GetUserDetail>>>, t: Throwable) {
-                Toast.makeText(context, "Fetch detail data failed", Toast.LENGTH_SHORT)
-                    .show()
-            }
-
-        })
-
-        this.transactionAdapter = TransactionAdapter(transactionData)
-        val layoutManager = LinearLayoutManager(context)
-        binding.recyclerTransaction.layoutManager = layoutManager
-        binding.recyclerTransaction.adapter = transactionAdapter
         prepareData()
 
         binding.imageProfile.setOnClickListener{
@@ -84,14 +51,34 @@ class HomeFragment : Fragment() {
     }
 
     private fun prepareData() {
-        this.transactionData.add(Transaction(
-            transactionImg = activity?.getDrawable(R.drawable.sample)!!,
-            transactionName = "Grinaldi Wisnu",
-            transactionNominal = 125000.00,
-            transactionType = "Transfer"
-        ))
+        this.transactionAdapter = TransactionAdapter(listOf())
 
-        this.transactionAdapter.notifyDataSetChanged()
+        binding.recyclerTransaction.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = transactionAdapter
+        }
 
+        viewModel.getInvoice().observe(viewLifecycleOwner) {
+            if (it.status == HttpsURLConnection.HTTP_OK) {
+                this.transactionAdapter.apply {
+                    addData(it.data!!)
+                    notifyDataSetChanged()
+                }
+            } else {
+                Toast.makeText(context, it.messages, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.getBalance().observe(viewLifecycleOwner) {
+            if (it.status == HttpsURLConnection.HTTP_OK) {
+                binding.apply {
+                    textAmount.formatPrice(it.data?.get(0)?.balance.toString())
+                    textUsername.text = it.data?.get(0)?.name
+                    textPhone.text = it.data?.get(0)?.phone
+                }
+            } else {
+                Toast.makeText(context, it.messages, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

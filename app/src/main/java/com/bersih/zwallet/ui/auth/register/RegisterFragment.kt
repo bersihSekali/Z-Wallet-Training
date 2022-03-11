@@ -50,7 +50,7 @@ class RegisterFragment : Fragment() {
                 binding.inputPassword.text.toString()
             )
 
-            NetworkConfig(context).getService().register(registerRequest)
+            NetworkConfig(context).buildApi().register(registerRequest)
                 .enqueue(object : Callback<ApiResponse<String>> {
                     override fun onResponse(
                         call: Call<ApiResponse<String>>,
