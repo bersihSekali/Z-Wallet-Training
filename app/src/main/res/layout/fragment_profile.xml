@@ -31,14 +31,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginStart="14dp">
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/textEdit"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit"
                 android:drawableLeft="@drawable/ic_baseline_edit_24"
+                android:layout_gravity="center"
                 style="@style/TextView.fifthSizeText"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"/>
@@ -46,7 +46,7 @@
                 android:id="@+id/textUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Klin Agusta Hernandi"
+                android:text="User Name"
                 style="@style/TextView.firstSizeText"
                 android:paddingTop="10dp"
                 android:gravity="center"
@@ -55,7 +55,7 @@
                 android:id="@+id/textPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+62822 1944 1030"
+                android:text="+62822 1234 5678"
                 style="@style/TextView.fourthSizeText"
                 android:paddingTop="10dp"
                 android:layout_gravity="center"

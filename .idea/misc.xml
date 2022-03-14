@@ -11,6 +11,7 @@
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/background_button_menu.xml" value="0.1345" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/background_button_trasnfer_topup.xml" value="0.112" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/background_input.xml" value="0.114" />
+        <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/background_otp_input.xml" value="0.108" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/background_status_home.xml" value="0.112" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/hover_item_transaction_home.xml" value="0.1175" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.114" />
@@ -28,7 +29,8 @@
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_forgot.xml" value="0.22" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_login.xml" value="0.2" />
-        <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_personal_profile.xml" value="0.1718683197947841" />
+        <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_otp.xml" value="0.22" />
+        <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_personal_profile.xml" value="0.16" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/item_transaction_home.xml" value="0.1956521739130435" />

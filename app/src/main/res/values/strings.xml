@@ -17,4 +17,6 @@
     <string name="dontHaveAccount">Don\'t have an Account?</string>
     <string name="signUp">Sign Up</string>
     <string name="personalProfileDesc">We got your personal information from the sign up process. If you want to make changes on your information, contact our support</string>
+    <string name="otpTitle">Please input your OTP!</string>
+    <string name="otpDesc">We have sent your OTP (One Time Password) code via email</string>
 </resources>

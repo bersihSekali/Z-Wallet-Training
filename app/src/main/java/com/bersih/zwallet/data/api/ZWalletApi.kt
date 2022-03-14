@@ -1,13 +1,7 @@
 package com.bersih.zwallet.data.api
 
-import com.bersih.zwallet.model.ApiResponse
-import com.bersih.zwallet.model.GetInvoice
-import com.bersih.zwallet.model.GetUserDetail
-import com.bersih.zwallet.model.User
-import com.bersih.zwallet.model.request.GetUserDetailRequest
-import com.bersih.zwallet.model.request.LoginRequest
-import com.bersih.zwallet.model.request.RefreshTokenRequest
-import com.bersih.zwallet.model.request.RegisterRequest
+import com.bersih.zwallet.model.*
+import com.bersih.zwallet.model.request.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,4 +22,7 @@ interface ZWalletApi {
 
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<ApiResponse<User>>
+
+    @GET("user/myProfile")
+    suspend fun getMyProfile(): ApiResponse<PersonalProfile>
 }

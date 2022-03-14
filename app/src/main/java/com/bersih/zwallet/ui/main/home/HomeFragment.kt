@@ -1,8 +1,10 @@
 package com.bersih.zwallet.ui.main.home
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +18,11 @@ import com.bersih.zwallet.databinding.FragmentHomeBinding
 import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.GetUserDetail
 import com.bersih.zwallet.network.NetworkConfig
+import com.bersih.zwallet.ui.main.profile.MainActivity
 import com.bersih.zwallet.ui.viewModelsFactory
 import com.bersih.zwallet.utils.*
 import com.bersih.zwallet.utils.Helper.formatPrice
+import com.bersih.zwallet.widget.LoadingDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +31,8 @@ import javax.net.ssl.HttpsURLConnection
 class HomeFragment : Fragment() {
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var prefs : SharedPreferences
+    private lateinit var preferences : SharedPreferences
+    private lateinit var loadingDialog: LoadingDialog
     private val viewModel: HomeViewModel by viewModelsFactory { HomeViewModel(requireActivity().application) }
 
     override fun onCreateView(
@@ -41,7 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        prefs = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
+        preferences = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
 
         prepareData()
 
@@ -59,13 +64,34 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getInvoice().observe(viewLifecycleOwner) {
-            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
-                this.transactionAdapter.apply {
-                    addData(it.resource.data!!)
-                    notifyDataSetChanged()
+            when (it.state) {
+                State.LOADING -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                        recyclerTransaction.visibility = View.GONE
+                    }
                 }
-            } else {
-                Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                State.SUCCESS -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                        recyclerTransaction.visibility = View.VISIBLE
+                    }
+                    if (it.resource?.status == HttpsURLConnection.HTTP_OK){
+                        this.transactionAdapter.apply {
+                            addData(it.resource.data!!)
+                            notifyDataSetChanged()
+                        }
+                    } else {
+                        Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                State.ERROR -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                        recyclerTransaction.visibility = View.VISIBLE
+                    }
+                    Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

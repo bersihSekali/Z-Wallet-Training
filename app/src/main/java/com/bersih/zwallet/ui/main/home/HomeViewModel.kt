@@ -8,6 +8,7 @@ import com.bersih.zwallet.data.api.ZWalletApi
 import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.model.GetUserDetail
+import com.bersih.zwallet.model.PersonalProfile
 import com.bersih.zwallet.network.NetworkConfig
 import com.bersih.zwallet.utils.Resource
 
@@ -21,5 +22,9 @@ class HomeViewModel(app: Application): ViewModel() {
 
     fun getBalance(): LiveData<Resource<ApiResponse<List<GetUserDetail>>?>> {
         return dataSource.getBalance()
+    }
+
+    fun getMyProfile(): LiveData<Resource<ApiResponse<PersonalProfile>?>> {
+        return dataSource.getMyProfile()
     }
 }
