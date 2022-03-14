@@ -20,36 +20,70 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/personalDesc">
+        app:layout_constraintTop_toBottomOf="@id/personalDesc">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="First Name"
-                style="@style/TextView.sixthSizeText"
-                android:background="@drawable/background_auth"
-                android:layout_marginTop="40dp"
-                android:textColor="#7A7886"/>
-
-            <TextView
-                android:id="@+id/firstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Klin Agusta"
-                android:layout_marginTop="40dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lastName"
+            android:id="@+id/greetings"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/bacground_item_transaction_home">
 
+            <LinearLayout
+                android:id="@+id/firstName"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Name"
+                    style="@style/TextView.fourthSizeText"
+                    android:gravity="center"
+                    android:textColor="@color/mainTextColor"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klin Agusta Hernandi"
+                    style="@style/TextView.fourthSizeText"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp">
+
+                <TextView
+                    android:id="@+id/textHello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Name"
+                    style="@style/TextView.fourthSizeText"
+                    android:gravity="center"
+                    android:textColor="@color/mainTextColor"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/textUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klin Agusta Hernandi"
+                    style="@style/TextView.fourthSizeText"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,25 +59,25 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getInvoice().observe(viewLifecycleOwner) {
-            if (it.status == HttpsURLConnection.HTTP_OK) {
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
                 this.transactionAdapter.apply {
-                    addData(it.data!!)
+                    addData(it.resource.data!!)
                     notifyDataSetChanged()
                 }
             } else {
-                Toast.makeText(context, it.messages, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
             }
         }
 
         viewModel.getBalance().observe(viewLifecycleOwner) {
-            if (it.status == HttpsURLConnection.HTTP_OK) {
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
                 binding.apply {
-                    textAmount.formatPrice(it.data?.get(0)?.balance.toString())
-                    textUsername.text = it.data?.get(0)?.name
-                    textPhone.text = it.data?.get(0)?.phone
+                    textAmount.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                    textUsername.text = it.resource.data?.get(0)?.name
+                    textPhone.text = it.resource.data?.get(0)?.phone
                 }
             } else {
-                Toast.makeText(context, it.messages, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
             }
         }
     }

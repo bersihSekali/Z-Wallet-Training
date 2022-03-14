@@ -9,16 +9,17 @@ import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.model.GetUserDetail
 import com.bersih.zwallet.network.NetworkConfig
+import com.bersih.zwallet.utils.Resource
 
 class HomeViewModel(app: Application): ViewModel() {
     private var apiClient: ZWalletApi = NetworkConfig(app).buildApi()
     private var dataSource = ZWalletDataSource(apiClient)
 
-    fun getInvoice(): LiveData<ApiResponse<List<GetInvoice>>> {
+    fun getInvoice(): LiveData<Resource<ApiResponse<List<GetInvoice>>?>> {
         return dataSource.getInvoice()
     }
 
-    fun getBalance(): LiveData<ApiResponse<List<GetUserDetail>>> {
+    fun getBalance(): LiveData<Resource<ApiResponse<List<GetUserDetail>>?>> {
         return dataSource.getBalance()
     }
 }

@@ -3,38 +3,39 @@ package com.bersih.zwallet.data
 import androidx.lifecycle.liveData
 import com.bersih.zwallet.data.api.ZWalletApi
 import com.bersih.zwallet.model.ApiResponse
-import com.bersih.zwallet.model.GetInvoice
-import com.bersih.zwallet.model.GetUserDetail
-import com.bersih.zwallet.model.User
 import com.bersih.zwallet.model.request.LoginRequest
+import com.bersih.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
 class ZWalletDataSource(private val apiClient: ZWalletApi) {
-    fun login(email: String, password: String) = liveData<ApiResponse<User>>(Dispatchers.IO) {
+    fun login(email: String, password: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             val loginRequest = LoginRequest(email = email, password = password)
             val response = apiClient.login(loginRequest)
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception) {
-            emit(ApiResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
         }
     }
 
-    fun getInvoice() = liveData<ApiResponse<List<GetInvoice>>>(Dispatchers.IO) {
+    fun getInvoice() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             val response = apiClient.getInvoice()
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception) {
-            emit(ApiResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
         }
     }
 
-    fun getBalance() = liveData<ApiResponse<List<GetUserDetail>>>(Dispatchers.IO) {
+    fun getBalance() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             val response = apiClient.getUserDetail()
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception) {
-            emit(ApiResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
         }
     }
 }

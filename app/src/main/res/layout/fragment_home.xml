@@ -66,9 +66,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/background_balanced_home"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintTop_toBottomOf="@+id/greetings">
         <TextView
             android:id="@+id/textBalanced"
@@ -76,10 +75,10 @@
             android:layout_height="wrap_content"
             android:text="Balanced"
             style="@style/TextView.sixthSizeText"
-            android:paddingTop="10dp"
+            android:paddingTop="25dp"
+            android:paddingStart="25dp"
             android:layout_gravity="start"
-            android:textColor="#DFDCDC"
-            android:paddingStart="13dp"/>
+            android:textColor="#DFDCDC"/>
 
         <TextView
             android:id="@+id/textAmount"
@@ -92,7 +91,7 @@
             android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
             android:paddingTop="10dp"
-            android:paddingStart="13dp"/>
+            android:paddingStart="25dp"/>
 
         <TextView
             android:id="@+id/textPhone"
@@ -103,7 +102,7 @@
             android:layout_gravity="start"
             android:textColor="#DFDCDC"
             android:paddingVertical="10dp"
-            android:paddingStart="13dp"/>
+            android:paddingStart="25dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -124,7 +123,7 @@
             android:drawableStart="@drawable/ic_baseline_arrow_upward_24"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:padding="15dp"
             android:layout_weight="1" />
 
@@ -137,7 +136,7 @@
             android:drawableStart="@drawable/ic_baseline_add_24"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:padding="15dp"
             android:layout_weight="1" />
     </LinearLayout>
@@ -150,7 +149,7 @@
         style="@style/TextView.fourthSizeText"
         android:textColor="@color/mainTextColor"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -162,7 +161,7 @@
         style="@style/TextView.sixthSizeText"
         android:textColor="@color/primaryColor"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
         />
@@ -173,7 +172,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/transactionHistory"
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="25dp"
         tools:listitem="@layout/list_transaction_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
