@@ -8,13 +8,30 @@
     android:background="@color/backgroundColor">
 
     <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_back_button">
+
+        <TextView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginVertical="20dp"
+            android:drawableStart="@drawable/ic_baseline_arrow_back_24"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/greetings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingVertical="15dp"
         android:paddingHorizontal="15dp"
-        android:layout_margin="15dp">
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageProfile"
@@ -49,7 +66,7 @@
                 android:text="User Name"
                 style="@style/TextView.firstSizeText"
                 android:paddingTop="10dp"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/textPhone"
@@ -195,25 +212,15 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/background_button_menu">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Logout"
                 style="@style/TextView.fifthSizeText"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/arrowForward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="5dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"/>
+                android:textAlignment="center"
+                android:textColor="@color/red"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -37,12 +37,25 @@
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/list_transaction_home.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/loading_dialog.xml" value="0.1718683197947841" />
         <entry key="..\:/Users/klin_agusta/Documents/android/app/src/main/res/layout/status_home.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/bacground_item_transaction_home.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/background_auth.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/background_back_button.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/background_balanced_home.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/background_button_auth.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/background_button_menu.xml" value="0.1" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/activity_splash_screen.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_change_pin.xml" value="0.2" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_confirm_password.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_create_pin.xml" value="0.2" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_create_pin_success.xml" value="0.18" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_forgot.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_home.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_login.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_otp.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_personal_profile.xml" value="0.21" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
+        <entry key="..\:/Users/klin_agusta/Documents/fazztrack-zwallet/Z-Wallet-Training/app/src/main/res/layout/fragment_top_up.xml" value="0.14" />
       </map>
     </option>
   </component>

@@ -39,6 +39,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.backBtn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeFragment)
+        }
+
         viewModel.getMyProfile().observe(viewLifecycleOwner){
             when (it.state) {
                 State.LOADING -> {
@@ -58,6 +62,10 @@ class ProfileFragment : Fragment() {
 
                 }
             }
+        }
+
+        binding.btnChangePassword.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
         }
 
         binding.btnLogout.setOnClickListener {

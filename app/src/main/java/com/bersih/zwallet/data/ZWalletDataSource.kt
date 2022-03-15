@@ -4,6 +4,7 @@ import androidx.lifecycle.liveData
 import com.bersih.zwallet.data.api.ZWalletApi
 import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.request.LoginRequest
+import com.bersih.zwallet.model.request.SetPinRequest
 import com.bersih.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
@@ -43,6 +44,16 @@ class ZWalletDataSource(private val apiClient: ZWalletApi) {
         emit(Resource.loading(null))
         try {
             val response = apiClient.getMyProfile()
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun setPin(request: SetPinRequest) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.setPin(request)
             emit(Resource.success(response))
         } catch (e: Exception) {
             emit(Resource.error(null, e.localizedMessage))

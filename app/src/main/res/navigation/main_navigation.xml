@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_topUpFragment"
+            app:destination="@id/topUpFragment" />
     </fragment>
 
     <fragment
@@ -24,10 +27,32 @@
         <action
             android:id="@+id/action_profileFragment_to_personalProfileFragment"
             app:destination="@id/personalProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePinFragment"
+            app:destination="@id/changePinFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalProfileFragment"
         android:name="com.bersih.zwallet.ui.main.profile.PersonalProfileFragment"
         android:label="fragment_personal_profile"
         tools:layout="@layout/fragment_personal_profile" />
+    <fragment
+        android:id="@+id/changePinFragment"
+        android:name="com.bersih.zwallet.ui.auth.pin.ChangePinFragment"
+        android:label="ChangePinFragment" >
+        <action
+            android:id="@+id/action_changePinFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.bersih.zwallet.ui.main.home.TopUpFragment"
+        android:label="TopUpFragment" >
+        <action
+            android:id="@+id/action_topUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

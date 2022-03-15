@@ -19,9 +19,22 @@
     <string name="personalProfileDesc">We got your personal information from the sign up process. If you want to make changes on your information, contact our support</string>
     <string name="otpTitle">Please input your OTP!</string>
     <string name="otpDesc">We have sent your OTP (One Time Password) code via email</string>
+    <string name="changePin">Change Pin</string>
+    <string name="changePinDesc">Enter your current 6 digits Zwallet PIN below to continue to the next step!</string>
     <string name="createPinTitle">Create Security PIN</string>
     <string name="createPinDesc">Create a PIN that\'s contain 6 digit number for security purpose in Zwallet</string>
     <string name="confirm">Confirm</string>
     <string name="pinSuccess">PIN Succesfully Created</string>
     <string name="pinSuccessDesc">Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</string>
+
+<!--    How To Top Up-->
+    <string name="howToTpUp">How To Top Up</string>
+    <string name="one">Go to nearest ATM or you can use E-Banking</string>
+    <string name="two">Type your security number on the ATM or E-Banking</string>
+    <string name="three">Select "Transfer" in the menu</string>
+    <string name="four">Type the virtual account number that we provide you at the top</string>
+    <string name="five">Type the amoint of the money you want to top up</string>
+    <string name="six">Read the summary details</string>
+    <string name="seven">Press transfer / top up</string>
+    <string name="eight">You can see your money in Zwallet within three hours</string>
 </resources>

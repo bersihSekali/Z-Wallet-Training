@@ -17,6 +17,9 @@
         <action
             android:id="@+id/loginActionForgot"
             app:destination="@id/forgotFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_createPinFragment"
+            app:destination="@id/createPinFragment" />
     </fragment>
 
     <fragment
@@ -41,4 +44,8 @@
         android:id="@+id/confirmPasswordFragment"
         android:name="com.bersih.zwallet.ui.auth.forgot.ConfirmPasswordFragment"
         android:label="ConfirmPasswordFragment" />
+    <fragment
+        android:id="@+id/createPinFragment"
+        android:name="com.bersih.zwallet.ui.auth.pin.CreatePinFragment"
+        android:label="CreatePinFragment" />
 </navigation>

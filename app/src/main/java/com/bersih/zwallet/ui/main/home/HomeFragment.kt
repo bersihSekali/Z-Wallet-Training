@@ -53,6 +53,10 @@ class HomeFragment : Fragment() {
         binding.imageProfile.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_profileFragment)
         }
+
+        binding.topUp.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_topUpFragment)
+        }
     }
 
     private fun prepareData() {

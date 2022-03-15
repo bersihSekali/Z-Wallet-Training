@@ -5,6 +5,7 @@ import com.bersih.zwallet.model.request.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 
 interface ZWalletApi {
@@ -25,4 +26,7 @@ interface ZWalletApi {
 
     @GET("user/myProfile")
     suspend fun getMyProfile(): ApiResponse<PersonalProfile>
+
+    @PATCH("auth/PIN")
+    suspend fun setPin(@Body request: SetPinRequest): ApiResponse<String>
 }
