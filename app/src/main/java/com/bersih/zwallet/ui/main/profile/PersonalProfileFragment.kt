@@ -56,6 +56,7 @@ class PersonalProfileFragment : Fragment() {
                         binding.apply {
                             firstName.text = it.resource.data?.firstname
                             lastName.text = it.resource.data?.lastname
+                            textEmail.text = it.resource.data?.email
                             phoneNumber.text = it.resource.data?.phone
                         }
                     } else {
