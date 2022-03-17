@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundColor"
-    tools:context=".ui.main.profile.PersonalProfileFragment">
+    tools:context=".ui.layout.main.profile.PersonalProfileFragment">
 
     <LinearLayout
         android:id="@+id/title"

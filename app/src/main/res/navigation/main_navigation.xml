@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.bersih.zwallet.ui.main.home.HomeFragment"
+        android:name="com.bersih.zwallet.ui.layout.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,42 +17,137 @@
         <action
             android:id="@+id/action_homeFragment_to_topUpFragment"
             app:destination="@id/topUpFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_recieverFragment"
+            app:destination="@id/recieverFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.bersih.zwallet.ui.main.profile.ProfileFragment"
+        android:name="com.bersih.zwallet.ui.layout.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_personalProfileFragment"
             app:destination="@id/personalProfileFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_changePinFragment"
-            app:destination="@id/changePinFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_currentPinFragment"
+            app:destination="@id/currentPinFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalProfileFragment"
-        android:name="com.bersih.zwallet.ui.main.profile.PersonalProfileFragment"
+        android:name="com.bersih.zwallet.ui.layout.main.profile.PersonalProfileFragment"
         android:label="fragment_personal_profile"
         tools:layout="@layout/fragment_personal_profile" />
     <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.bersih.zwallet.ui.layout.main.home.TopUpFragment"
+        android:label="TopUpFragment" >
+        <action
+            android:id="@+id/action_topUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputAmountFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.InputAmountFragment"
+        android:label="InputAmountFragment" >
+        <action
+            android:id="@+id/action_inputAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+        <action
+            android:id="@+id/action_inputAmountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.ConfirmationFragment"
+        android:label="ConfirmationFragment" >
+        <action
+            android:id="@+id/action_confirmationFragment_to_pinConfirmationFragment"
+            app:destination="@id/pinConfirmationFragment" />
+        <action
+            android:id="@+id/action_confirmationFragment_to_inputAmountFragment"
+            app:destination="@id/inputAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinConfirmationFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.PinConfirmationFragment"
+        android:label="PinConfirmationFragment" >
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_failedTransactionFragment"
+            app:destination="@id/failedTransactionFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_successTransactionFragment"
+            app:destination="@id/successTransactionFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_inputAmountFragment"
+            app:destination="@id/inputAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/failedTransactionFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.FailedTransactionFragment"
+        android:label="FailedTransactionFragment" >
+        <action
+            android:id="@+id/action_failedTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successTransactionFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.SuccessTransactionFragment"
+        android:label="SuccessTransactionFragment" >
+        <action
+            android:id="@+id/action_successTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.password.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" />
+    <fragment
+        android:id="@+id/currentPinFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.CurrentPinFragment"
+        android:label="CurrentPinFragment" >
+        <action
+            android:id="@+id/action_currentPinFragment_to_changePinFragment"
+            app:destination="@id/changePinFragment" />
+        <action
+            android:id="@+id/action_currentPinFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/changePinFragment"
-        android:name="com.bersih.zwallet.ui.auth.pin.ChangePinFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.ChangePinFragment"
         android:label="ChangePinFragment" >
+        <action
+            android:id="@+id/action_changePinFragment_to_confirmChangePinFragment"
+            app:destination="@id/confirmChangePinFragment" />
         <action
             android:id="@+id/action_changePinFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/topUpFragment"
-        android:name="com.bersih.zwallet.ui.main.home.TopUpFragment"
-        android:label="TopUpFragment" >
+        android:id="@+id/confirmChangePinFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.ConfirmChangePinFragment"
+        android:label="ConfirmChangePinFragment" >
         <action
-            android:id="@+id/action_topUpFragment_to_homeFragment"
+            android:id="@+id/action_confirmChangePinFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recieverFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.RecieverFragment"
+        android:label="RecieverFragment" >
+        <action
+            android:id="@+id/action_recieverFragment_to_inputAmountFragment"
+            app:destination="@id/inputAmountFragment" />
+        <action
+            android:id="@+id/action_recieverFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -7,8 +7,9 @@ import com.bersih.zwallet.model.request.LoginRequest
 import com.bersih.zwallet.model.request.SetPinRequest
 import com.bersih.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class ZWalletDataSource(private val apiClient: ZWalletApi) {
+class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi) {
     fun login(email: String, password: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
@@ -59,4 +60,6 @@ class ZWalletDataSource(private val apiClient: ZWalletApi) {
             emit(Resource.error(null, e.localizedMessage))
         }
     }
+
+
 }
