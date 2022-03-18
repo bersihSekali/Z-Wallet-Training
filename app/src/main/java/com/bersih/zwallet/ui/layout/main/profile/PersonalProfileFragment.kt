@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.bersih.zwallet.databinding.FragmentPersonalProfileBinding
 import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
 import com.bersih.zwallet.ui.widget.LoadingDialog
@@ -39,6 +40,10 @@ class PersonalProfileFragment : Fragment() {
         preferences = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
 
         prepareData()
+
+        binding.backBtn.setOnClickListener {
+            Navigation.findNavController(view).popBackStack()
+        }
     }
 
     private fun prepareData() {

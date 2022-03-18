@@ -21,6 +21,9 @@ interface ZWalletApi {
     @GET("home/getInvoice")
     suspend fun getInvoice(): ApiResponse<List<GetInvoice>>
 
+    @GET("tranfer/contactUser")
+    suspend fun getContact(): ApiResponse<List<GetContact>>
+
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<ApiResponse<User>>
 

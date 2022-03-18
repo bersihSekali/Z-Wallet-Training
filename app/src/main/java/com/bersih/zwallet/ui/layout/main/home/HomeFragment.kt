@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentHomeBinding
-import com.bersih.zwallet.ui.adapter.TransactionAdapter
+import com.bersih.zwallet.adapter.TransactionAdapter
 import com.bersih.zwallet.ui.widget.LoadingDialog
 import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bersih.zwallet.utils.PREFS_NAME

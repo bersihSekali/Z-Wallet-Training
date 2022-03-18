@@ -1,4 +1,4 @@
-package com.bersih.zwallet.ui.adapter
+package com.bersih.zwallet.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
