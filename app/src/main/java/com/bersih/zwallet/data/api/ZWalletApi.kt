@@ -40,5 +40,8 @@ interface ZWalletApi {
     ): ApiResponse<Transfer>
 
     @PATCH("user/changePassword")
-    suspend fun changePassword(@Body request: ChangePinRequest): ApiResponse<String>
+    suspend fun changePassword(@Body request: ChangePasswordRequest): ApiResponse<String>
+
+    @PATCH("topup/topupbalance")
+    suspend fun topUpBalance(@Body request: TopUpBalanceRequest): ApiResponse<String>
 }

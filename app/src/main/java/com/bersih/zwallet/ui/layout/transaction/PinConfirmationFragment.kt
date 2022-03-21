@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -37,6 +38,32 @@ class PinConfirmationFragment : Fragment() {
 
         binding.backBtn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_pinConfirmationFragment_to_inputAmountFragment)
+        }
+
+        binding.pin1.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin2.requestFocus()
+            }
+        }
+        binding.pin2.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin3.requestFocus()
+            }
+        }
+        binding.pin3.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin4.requestFocus()
+            }
+        }
+        binding.pin4.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin5.requestFocus()
+            }
+        }
+        binding.pin5.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin6.requestFocus()
+            }
         }
     }
 

@@ -1,6 +1,8 @@
 package com.bersih.zwallet.ui.layout.auth.pin
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentCreatePinBinding
 import com.bersih.zwallet.model.request.SetPinRequest
+import com.bersih.zwallet.ui.layout.main.MainActivity
 import com.bersih.zwallet.ui.widget.LoadingDialog
 import com.bersih.zwallet.utils.State
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,12 +45,12 @@ class CreatePinFragment : Fragment() {
             viewModel.setPin(request).observe(viewLifecycleOwner){
                 when (it.state){
                     State.LOADING -> {
-                        loadingDialog.start("Processing your request ;)")
+                        loadingDialog.start("Creating your PIN!")
                     }
                     State.SUCCESS -> {
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
                             loadingDialog.stop()
-                            Navigation.findNavController(view).popBackStack()
+                            Navigation.findNavController(view).navigate(R.id.action_createPinFragment_to_createPinSuccessFragment2)
                         } else {
                             Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT)
                                 .show()

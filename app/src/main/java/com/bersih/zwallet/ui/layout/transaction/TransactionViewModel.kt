@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.bersih.zwallet.data.ZWalletDataSource
 import com.bersih.zwallet.model.*
 import com.bersih.zwallet.model.request.GetContact
+import com.bersih.zwallet.model.request.TopUpBalanceRequest
 import com.bersih.zwallet.model.request.TransferRequest
 import com.bersih.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -42,5 +43,9 @@ class TransactionViewModel @Inject constructor(private val dataSource: ZWalletDa
 
     fun transfer(data: TransferRequest, pin: String): LiveData<Resource<ApiResponse<Transfer>?>> {
         return dataSource.transfer(data, pin)
+    }
+
+    fun topUpBalance(data: TopUpBalanceRequest): LiveData<Resource<ApiResponse<String>?>> {
+        return dataSource.topUpBalance(data)
     }
 }

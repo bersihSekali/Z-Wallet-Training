@@ -115,7 +115,7 @@ class HomeFragment : Fragment() {
                         .into(imageProfile)
                 }
             } else {
-                Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "${it.resource?.messages}", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -15,11 +15,11 @@
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_topUpFragment"
-            app:destination="@id/topUpFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_recieverFragment"
             app:destination="@id/recieverFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_topUpFragment"
+            app:destination="@id/topUpFragment" />
     </fragment>
 
     <fragment
@@ -30,9 +30,6 @@
         <action
             android:id="@+id/action_profileFragment_to_personalProfileFragment"
             app:destination="@id/personalProfileFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_profileFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
@@ -45,14 +42,6 @@
         android:name="com.bersih.zwallet.ui.layout.main.profile.PersonalProfileFragment"
         android:label="fragment_personal_profile"
         tools:layout="@layout/fragment_personal_profile" />
-    <fragment
-        android:id="@+id/topUpFragment"
-        android:name="com.bersih.zwallet.ui.layout.main.home.TopUpFragment"
-        android:label="TopUpFragment" >
-        <action
-            android:id="@+id/action_topUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/inputAmountFragment"
         android:name="com.bersih.zwallet.ui.layout.transaction.InputAmountFragment"
@@ -119,28 +108,6 @@
         <action
             android:id="@+id/action_currentPinFragment_to_changePinFragment"
             app:destination="@id/changePinFragment" />
-        <action
-            android:id="@+id/action_currentPinFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/changePinFragment"
-        android:name="com.bersih.zwallet.ui.layout.auth.pin.ChangePinFragment"
-        android:label="ChangePinFragment" >
-        <action
-            android:id="@+id/action_changePinFragment_to_confirmChangePinFragment"
-            app:destination="@id/confirmChangePinFragment" />
-        <action
-            android:id="@+id/action_changePinFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/confirmChangePinFragment"
-        android:name="com.bersih.zwallet.ui.layout.auth.pin.ConfirmChangePinFragment"
-        android:label="ConfirmChangePinFragment" >
-        <action
-            android:id="@+id/action_confirmChangePinFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/recieverFragment"
@@ -149,8 +116,21 @@
         <action
             android:id="@+id/action_recieverFragment_to_inputAmountFragment"
             app:destination="@id/inputAmountFragment" />
-        <action
-            android:id="@+id/action_recieverFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/createPinSuccessFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.CreatePinSuccessFragment"
+        android:label="CreatePinSuccessFragment" />
+    <fragment
+        android:id="@+id/changePinFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.ChangePinFragment"
+        android:label="ChangePinFragment" >
+        <action
+            android:id="@+id/action_changePinFragment_to_createPinSuccessFragment"
+            app:destination="@id/createPinSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.bersih.zwallet.ui.layout.transaction.TopUpFragment"
+        android:label="TopUpFragment" />
 </navigation>

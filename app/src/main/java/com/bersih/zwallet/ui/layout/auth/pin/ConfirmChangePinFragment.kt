@@ -23,8 +23,5 @@ class ConfirmChangePinFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.backBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_confirmChangePinFragment_to_profileFragment)
-        }
     }
 }

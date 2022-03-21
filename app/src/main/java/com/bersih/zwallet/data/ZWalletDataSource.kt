@@ -2,9 +2,7 @@ package com.bersih.zwallet.data
 
 import androidx.lifecycle.liveData
 import com.bersih.zwallet.data.api.ZWalletApi
-import com.bersih.zwallet.model.request.LoginRequest
-import com.bersih.zwallet.model.request.SetPinRequest
-import com.bersih.zwallet.model.request.TransferRequest
+import com.bersih.zwallet.model.request.*
 import com.bersih.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -86,6 +84,26 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi) {
         try {
             val resource = apiClient.transfer(data, pin)
             emit(Resource.success(resource))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun changePassword(request: ChangePasswordRequest) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.changePassword(request)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun topUpBalance(request: TopUpBalanceRequest) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = apiClient.topUpBalance(request)
+            emit(Resource.success(response))
         } catch (e: Exception) {
             emit(Resource.error(null, e.localizedMessage))
         }

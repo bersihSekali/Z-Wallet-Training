@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.backBtn.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeFragment)
+            Navigation.findNavController(view).popBackStack()
         }
 
         viewModel.getMyProfile().observe(viewLifecycleOwner){

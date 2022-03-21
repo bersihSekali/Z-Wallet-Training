@@ -47,5 +47,13 @@
     <fragment
         android:id="@+id/createPinFragment"
         android:name="com.bersih.zwallet.ui.layout.auth.pin.CreatePinFragment"
-        android:label="CreatePinFragment" />
+        android:label="CreatePinFragment" >
+        <action
+            android:id="@+id/action_createPinFragment_to_createPinSuccessFragment2"
+            app:destination="@id/createPinSuccessFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPinSuccessFragment2"
+        android:name="com.bersih.zwallet.ui.layout.auth.pin.CreatePinSuccessFragment"
+        android:label="CreatePinSuccessFragment" />
 </navigation>

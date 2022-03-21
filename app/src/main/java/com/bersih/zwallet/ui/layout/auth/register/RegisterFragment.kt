@@ -3,6 +3,7 @@ package com.bersih.zwallet.ui.layout.auth.register
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -10,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentRegisterBinding
 import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.request.RegisterRequest
@@ -39,6 +42,16 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         prefs = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
+
+        binding.inputPassword.addTextChangedListener {
+            if (binding.inputPassword.text.length > 8) {
+                binding.btnSignUp.setBackgroundResource(R.drawable.background_button_auth_active)
+                binding.btnSignUp.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.inputPassword.text.length <= 8) {
+                binding.btnSignUp.setBackgroundResource(R.drawable.background_button_auth)
+                binding.btnSignUp.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
 
         binding.btnSignUp.setOnClickListener {
             if (binding.inputUsername.text.isNullOrEmpty() || binding.inputEmail.text.isNullOrEmpty() || binding.inputPassword.text.isNullOrEmpty()) {
