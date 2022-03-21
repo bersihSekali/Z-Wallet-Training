@@ -22,7 +22,9 @@ class NetworkConfig(val context: Context?) {
         client.addInterceptor(logging)
 
         if (!token.isNullOrEmpty()) {
-            client.addInterceptor(TokenInterceptor(token))
+            client.addInterceptor(TokenInterceptor {
+                preferences?.getString(KEY_USER_TOKEN, "").toString()
+            })
         }
         if (authenticator != null) {
             client.authenticator(authenticator)

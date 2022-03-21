@@ -16,9 +16,12 @@ import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentProfileBinding
 import com.bersih.zwallet.ui.layout.SplashScreenActivity
 import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
+import com.bersih.zwallet.utils.BASE_URL
 import com.bersih.zwallet.utils.KEY_LOGGED_IN
 import com.bersih.zwallet.utils.PREFS_NAME
 import com.bersih.zwallet.utils.State
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
@@ -54,6 +57,13 @@ class ProfileFragment : Fragment() {
                         binding.apply {
                             textUsername.text = it.resource.data?.firstname + " " + it.resource.data?.lastname
                             textPhone.text = it.resource.data?.phone
+                            Glide.with(imageProfile)
+                                .load(BASE_URL + it.resource.data?.image)
+                                .apply(
+                                    RequestOptions.circleCropTransform()
+                                        .placeholder(R.drawable.ic_baseline_broken_image_24)
+                                )
+                                .into(imageProfile)
                         }
                     } else {
                         Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentRecieverBinding
 import com.bersih.zwallet.adapter.GetContactAdapter
 import com.bersih.zwallet.utils.State
@@ -19,7 +20,7 @@ import javax.net.ssl.HttpsURLConnection
 class RecieverFragment : Fragment() {
     private lateinit var getContactAdapter: GetContactAdapter
     private lateinit var binding: FragmentRecieverBinding
-    private val viewModel: TransactionModel by activityViewModels()
+    private val viewModel: TransactionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,14 +38,13 @@ class RecieverFragment : Fragment() {
         binding.backBtn.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
-
-        binding.numberOfContact.setOnClickListener {
-            Navigation.findNavController(view).popBackStack()
-        }
     }
 
     private fun prepareData() {
-        this.getContactAdapter = GetContactAdapter(listOf())
+        this.getContactAdapter = GetContactAdapter(listOf()) { getContact, view ->
+            viewModel.setSelectedContact(getContact)
+            Navigation.findNavController(view).navigate(R.id.action_recieverFragment_to_inputAmountFragment)
+        }
 
         binding.recyclerContact.apply {
             layoutManager = LinearLayoutManager(context)

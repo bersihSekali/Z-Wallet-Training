@@ -3,10 +3,7 @@ package com.bersih.zwallet.data.api
 import com.bersih.zwallet.model.*
 import com.bersih.zwallet.model.request.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ZWalletApi {
     @POST("auth/login")
@@ -32,4 +29,16 @@ interface ZWalletApi {
 
     @PATCH("auth/PIN")
     suspend fun setPin(@Body request: SetPinRequest): ApiResponse<String>
+
+    @GET("auth/checkPIN/{PIN}")
+    suspend fun checkPin(@Path("PIN") pin: String): ApiResponse<String>
+
+    @POST("tranfer/newTranfer")
+    suspend fun transfer(
+        @Body request: TransferRequest,
+        @Header("x-access-PIN") pin: String
+    ): ApiResponse<Transfer>
+
+    @PATCH("user/changePassword")
+    suspend fun changePassword(@Body request: ChangePinRequest): ApiResponse<String>
 }

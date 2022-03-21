@@ -2,10 +2,9 @@ package com.bersih.zwallet.data
 
 import androidx.lifecycle.liveData
 import com.bersih.zwallet.data.api.ZWalletApi
-import com.bersih.zwallet.model.ApiResponse
-import com.bersih.zwallet.model.request.GetContactRequest
 import com.bersih.zwallet.model.request.LoginRequest
 import com.bersih.zwallet.model.request.SetPinRequest
+import com.bersih.zwallet.model.request.TransferRequest
 import com.bersih.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -67,6 +66,26 @@ class ZWalletDataSource @Inject constructor(private val apiClient: ZWalletApi) {
         try {
             val response = apiClient.getContact()
             emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun checkPin(pin: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val resource = apiClient.checkPin(pin = pin)
+            emit(Resource.success(resource))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun transfer(data: TransferRequest, pin: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val resource = apiClient.transfer(data, pin)
+            emit(Resource.success(resource))
         } catch (e: Exception) {
             emit(Resource.error(null, e.localizedMessage))
         }

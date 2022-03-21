@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_pinConfirmationFragment_to_inputAmountFragment"
             app:destination="@id/inputAmountFragment" />
+        <action
+            android:id="@+id/action_pinConfirmationFragment_to_successTransactionFragment2"
+            app:destination="@id/successTransactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/failedTransactionFragment"

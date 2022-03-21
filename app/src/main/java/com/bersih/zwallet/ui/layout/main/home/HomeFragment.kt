@@ -15,9 +15,12 @@ import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentHomeBinding
 import com.bersih.zwallet.adapter.TransactionAdapter
 import com.bersih.zwallet.ui.widget.LoadingDialog
+import com.bersih.zwallet.utils.BASE_URL
 import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bersih.zwallet.utils.PREFS_NAME
 import com.bersih.zwallet.utils.State
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
@@ -103,6 +106,13 @@ class HomeFragment : Fragment() {
                     textAmount.formatPrice(it.resource.data?.get(0)?.balance.toString())
                     textUsername.text = it.resource.data?.get(0)?.name
                     textPhone.text = it.resource.data?.get(0)?.phone
+                    Glide.with(imageProfile)
+                        .load(BASE_URL + it.resource.data?.get(0)?.image)
+                        .apply(
+                            RequestOptions.circleCropTransform()
+                                .placeholder(R.drawable.ic_baseline_broken_image_24)
+                        )
+                        .into(imageProfile)
                 }
             } else {
                 Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
