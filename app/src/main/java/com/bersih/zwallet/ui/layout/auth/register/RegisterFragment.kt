@@ -54,7 +54,8 @@ class RegisterFragment : Fragment() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            if (binding.inputUsername.text.isNullOrEmpty() || binding.inputEmail.text.isNullOrEmpty() || binding.inputPassword.text.isNullOrEmpty()) {
+            if (binding.inputUsername.text.isNullOrEmpty() || binding.inputEmail.text.isNullOrEmpty()
+                || binding.inputPassword.text.isNullOrEmpty()) {
                 Toast.makeText(activity, "Fill the required field!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentHomeBinding
 import com.bersih.zwallet.adapter.TransactionAdapter
+import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.ui.widget.LoadingDialog
 import com.bersih.zwallet.utils.BASE_URL
 import com.bersih.zwallet.utils.Helper.formatPrice
@@ -37,6 +38,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        loadingDialog = LoadingDialog(requireActivity())
         return binding.root
     }
 
@@ -72,12 +74,14 @@ class HomeFragment : Fragment() {
             when (it.state) {
                 State.LOADING -> {
                     binding.apply {
+                        loadingDialog.start("Processing history")
                         loadingIndicator.visibility = View.VISIBLE
                         recyclerTransaction.visibility = View.GONE
                     }
                 }
                 State.SUCCESS -> {
                     binding.apply {
+                        loadingDialog.stop()
                         loadingIndicator.visibility = View.GONE
                         recyclerTransaction.visibility = View.VISIBLE
                     }
@@ -92,6 +96,7 @@ class HomeFragment : Fragment() {
                 }
                 State.ERROR -> {
                     binding.apply {
+                        loadingDialog.stop()
                         loadingIndicator.visibility = View.GONE
                         recyclerTransaction.visibility = View.VISIBLE
                     }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.bersih.zwallet.R
@@ -36,6 +37,33 @@ class ChangePinFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.pin1.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin2.requestFocus()
+            }
+        }
+        binding.pin2.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin3.requestFocus()
+            }
+        }
+        binding.pin3.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin4.requestFocus()
+            }
+        }
+        binding.pin4.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin5.requestFocus()
+            }
+        }
+        binding.pin5.doOnTextChanged { text, start, before, count ->
+            if (count >= 1) {
+                binding.pin6.requestFocus()
+            }
+        }
+
         binding.backBtn.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }

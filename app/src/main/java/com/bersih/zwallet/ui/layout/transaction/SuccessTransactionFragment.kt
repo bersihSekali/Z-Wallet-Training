@@ -1,7 +1,9 @@
 package com.bersih.zwallet.ui.layout.transaction
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentSuccessTransactionBinding
+import com.bersih.zwallet.ui.layout.main.MainActivity
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -30,7 +33,7 @@ class SuccessTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.homeBtn.setOnClickListener {
+        binding.btnHome.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_successTransactionFragment_to_homeFragment)
         }
 
@@ -39,7 +42,6 @@ class SuccessTransactionFragment : Fragment() {
 
     private fun prepareData(view: View) {
         viewModel.getTransferParam().observe(viewLifecycleOwner) {
-            binding.textUsername.text = it.receiver
             binding.textAmount.text = it.amount.toString()
             binding.textNotes.text = it.notes
 
@@ -61,6 +63,21 @@ class SuccessTransactionFragment : Fragment() {
                 val answer = formatter.format(date)
                 binding.textDate.text = answer
             }
+
+            Handler().postDelayed({
+                val intent = Intent(activity, MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }, 10000)
+        }
+
+        viewModel.selectedContact().observe(viewLifecycleOwner) {
+            binding.textUsername.text = it.name
+            binding.textPhone.text = it.phone
+        }
+
+        viewModel.getBalance().observe(viewLifecycleOwner) {
+            binding.textBalanced.text = it.resource?.data?.get(0)?.balance.toString()
         }
     }
 }

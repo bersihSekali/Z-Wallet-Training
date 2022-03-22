@@ -72,7 +72,7 @@
         android:id="@+id/numberOfContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Number of Contacts"
+        android:text=""
         style="@style/TextView.sixthSizeText"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="5dp"

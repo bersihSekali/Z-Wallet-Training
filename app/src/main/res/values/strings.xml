@@ -1,5 +1,5 @@
 <resources>
-<!--    Login Strings-->
+<!--    Login Registration Strings-->
     <string name="app_name">ZWallet</string>
     <string name="text_login">Login</string>
     <string name="text_login_desc">Login to your existing account to access all the features in Zwallet.</string>
@@ -7,21 +7,20 @@
     <string name="hint_password">Enter your password</string>
     <string name="signUp">Sign Up</string>
     <string name="signUpDesc">Create your account to access ZWallet</string>
-
     <string name="hint_username">Enter your username</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="confirm_hint_password">Enter your confirm password</string>
     <string name="text_forgot_password">Forgot password?</string>
-    <string name="text_confirm">Confirm</string>
     <string name="resetPasword">Reset Password</string>
     <string name="resetPasswordDesc">Enter Your Z-Wallet email so we can send you a password reset link</string>
-    <string name="confirmPasswordDesc">Create and Confirm yout new password so you can login to Z-Wallet</string>
-    <string name="slogans">Make easy your payment</string>
     <string name="dontHaveAccount">Don\'t have an Account?</string>
-    <string name="personalProfileDesc">We got your personal information from the sign up process. If you want to make changes on your information, contact our support</string>
     <string name="otpTitle">Please input your OTP!</string>
     <string name="otpDesc">We have sent your OTP (One Time Password) code via email</string>
-    <string name="confirm">Confirm</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm_hint_password">Enter your confirm password</string>
+    <string name="text_confirm">Confirm</string>
+    <string name="confirmPasswordDesc">Create and Confirm yout new password so you can login to Z-Wallet</string>
+    <string name="slogans">Make easy your payment</string>
+    <string name="personalProfileDesc">We got your personal information from the sign up process. If you want to make changes on your information, contact our support</string>
 
     <!--    How To Top Up-->
     <string name="howToTpUp">How To Top Up</string>

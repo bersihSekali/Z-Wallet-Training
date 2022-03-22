@@ -13,6 +13,7 @@ import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentInputAmountBinding
 import com.bersih.zwallet.model.request.TransferRequest
 import com.bersih.zwallet.utils.BASE_URL
+import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,7 @@ class InputAmountFragment : Fragment() {
         prepareData(view)
 
         binding.textAmount.addTextChangedListener {
-            if (binding.textAmount.text.length > 4) {
+            if (binding.textAmount.text.length > 0) {
                 binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth_active)
                 binding.btnContinue.setTextColor(Color.parseColor("#FFFFFF"))
             }
@@ -64,7 +65,9 @@ class InputAmountFragment : Fragment() {
         }
 
         viewModel.getBalance().observe(viewLifecycleOwner) {
-            binding.textBalanced.text = it.resource?.data?.get(0)?.balance.toString()
+            binding.apply {
+                textBalanced.formatPrice(it.resource?.data?.get(0)?.balance.toString())
+            }
         }
 
         binding.btnContinue.setOnClickListener {

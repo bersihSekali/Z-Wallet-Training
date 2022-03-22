@@ -40,7 +40,7 @@
             android:scaleType="centerCrop"
             android:layout_gravity="center"
             app:shapeAppearanceOverlay="@style/RoundCornerOverLay"
-            android:src="@drawable/sample"/>
+            android:src="@drawable/ic_baseline_broken_image_24"/>
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,7 +63,8 @@
                 android:id="@+id/textUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Name"
+                android:text=""
+                android:textStyle="bold"
                 style="@style/TextView.firstSizeText"
                 android:paddingTop="10dp"
                 android:layout_gravity="center"
@@ -72,7 +73,7 @@
                 android:id="@+id/textPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+62822 1234 5678"
+                android:text=""
                 style="@style/TextView.fourthSizeText"
                 android:paddingTop="10dp"
                 android:layout_gravity="center"

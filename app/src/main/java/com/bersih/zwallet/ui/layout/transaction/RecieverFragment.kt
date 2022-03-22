@@ -61,6 +61,7 @@ class RecieverFragment : Fragment() {
                     if (it.resource?.status == HttpsURLConnection.HTTP_OK){
                         this.getContactAdapter.apply {
                             addData(it.resource.data!!)
+                            binding.numberOfContact.setText(" Contacts Found " + itemCount)
                             notifyDataSetChanged()
                         }
                     } else {

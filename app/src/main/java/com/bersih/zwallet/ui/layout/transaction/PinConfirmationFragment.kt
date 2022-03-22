@@ -1,10 +1,12 @@
 package com.bersih.zwallet.ui.layout.transaction
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -48,21 +50,41 @@ class PinConfirmationFragment : Fragment() {
         binding.pin2.doOnTextChanged { text, start, before, count ->
             if (count >= 1) {
                 binding.pin3.requestFocus()
+            } else {
+                binding.pin1.requestFocus()
             }
         }
         binding.pin3.doOnTextChanged { text, start, before, count ->
             if (count >= 1) {
                 binding.pin4.requestFocus()
+            } else {
+                binding.pin2.requestFocus()
             }
         }
         binding.pin4.doOnTextChanged { text, start, before, count ->
             if (count >= 1) {
                 binding.pin5.requestFocus()
+            } else {
+                binding.pin3.requestFocus()
             }
         }
         binding.pin5.doOnTextChanged { text, start, before, count ->
             if (count >= 1) {
                 binding.pin6.requestFocus()
+            } else {
+                binding.pin4.requestFocus()
+            }
+        }
+        binding.pin6.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin5.requestFocus()
+            }
+        }
+
+        binding.pin6.addTextChangedListener {
+            if (binding.pin6.text.length > 0) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth_active)
+                binding.btnContinue.setTextColor(Color.parseColor("#FFFFFF"))
             }
         }
     }

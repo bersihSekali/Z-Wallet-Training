@@ -15,7 +15,7 @@
         android:layout_height="56dp"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/RoundCornerOverLay"
-        android:src="@drawable/sample"/>
+        android:src="@drawable/ic_baseline_broken_image_24"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
             android:id="@+id/textTransactionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Samuel Sushi"
+            android:text=""
             style="@style/TextView.fifthSizeText"
             android:gravity="center"
             android:textColor="@color/mainTextColor"
@@ -38,7 +38,7 @@
             android:id="@+id/textTransactionType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transfer"
+            android:text=""
             style="@style/TextView.sixthSizeText"
             android:gravity="center"
             android:textColor="@color/darkGrey"/>
@@ -48,7 +48,7 @@
         android:id="@+id/textTransactionAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+Rp50.000"
+        android:text="Amount"
         style="@style/TextView.fourthSizeText"
         android:layout_gravity="center"
         android:textColor="@color/green"/>

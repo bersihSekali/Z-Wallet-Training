@@ -29,7 +29,7 @@
             android:id="@+id/textContactName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact Name"
+            android:text=""
             style="@style/TextView.fifthSizeText"
             android:gravity="center"
             android:textColor="@color/mainTextColor"
@@ -39,7 +39,7 @@
             android:id="@+id/textContactPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Phone Number"
+            android:text=""
             style="@style/TextView.sixthSizeText"
             android:gravity="center"
             android:textColor="@color/mainTextColor"/>

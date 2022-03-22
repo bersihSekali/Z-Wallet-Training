@@ -63,7 +63,6 @@ class ConfirmationFragment : Fragment() {
 
         viewModel.getTransferParam().observe(viewLifecycleOwner) {
             binding.textAmount.formatPrice(it.amount.toString())
-            binding.textBalanced.formatPrice(it.amount.toString())
 
             if (it.notes.isNullOrEmpty()) {
                 binding.textNotes.text = ""
@@ -82,6 +81,12 @@ class ConfirmationFragment : Fragment() {
                 val formatter = SimpleDateFormat("MMM dd, yyyy - HH:mma")
                 val answer = formatter.format(date)
                 binding.textDate.text = answer
+            }
+        }
+
+        viewModel.getBalance().observe(viewLifecycleOwner) {
+            binding.apply {
+                textBalanced.formatPrice(it.resource?.data?.get(0)?.balance.toString())
             }
         }
     }
