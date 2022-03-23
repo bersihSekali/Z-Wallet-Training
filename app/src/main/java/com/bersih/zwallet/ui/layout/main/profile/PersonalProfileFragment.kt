@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentPersonalProfileBinding
 import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
 import com.bersih.zwallet.ui.widget.LoadingDialog
@@ -43,6 +44,10 @@ class PersonalProfileFragment : Fragment() {
 
         binding.backBtn.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
+        }
+
+        binding.managePhoneNumber.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_personalProfileFragment_to_editPhoneFragment)
         }
     }
 

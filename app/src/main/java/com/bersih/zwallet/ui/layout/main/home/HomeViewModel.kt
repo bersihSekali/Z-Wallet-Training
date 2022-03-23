@@ -9,6 +9,7 @@ import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.model.GetUserDetail
 import com.bersih.zwallet.model.PersonalProfile
+import com.bersih.zwallet.model.request.EditPhoneRequest
 import com.bersih.zwallet.network.NetworkConfig
 import com.bersih.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,5 +28,9 @@ class HomeViewModel @Inject constructor(private val dataSource: ZWalletDataSourc
 
     fun getMyProfile(): LiveData<Resource<ApiResponse<PersonalProfile>?>> {
         return dataSource.getMyProfile()
+    }
+
+    fun editPhone(request: EditPhoneRequest): LiveData<Resource<ApiResponse<String>?>> {
+        return dataSource.editPhone(request)
     }
 }

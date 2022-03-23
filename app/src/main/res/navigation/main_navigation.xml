@@ -41,7 +41,11 @@
         android:id="@+id/personalProfileFragment"
         android:name="com.bersih.zwallet.ui.layout.main.profile.PersonalProfileFragment"
         android:label="fragment_personal_profile"
-        tools:layout="@layout/fragment_personal_profile" />
+        tools:layout="@layout/fragment_personal_profile" >
+        <action
+            android:id="@+id/action_personalProfileFragment_to_editPhoneFragment"
+            app:destination="@id/editPhoneFragment" />
+    </fragment>
     <fragment
         android:id="@+id/inputAmountFragment"
         android:name="com.bersih.zwallet.ui.layout.transaction.InputAmountFragment"
@@ -133,4 +137,8 @@
         android:id="@+id/topUpFragment"
         android:name="com.bersih.zwallet.ui.layout.transaction.TopUpFragment"
         android:label="TopUpFragment" />
+    <fragment
+        android:id="@+id/editPhoneFragment"
+        android:name="com.bersih.zwallet.ui.layout.main.profile.EditPhoneFragment"
+        android:label="EditPhoneFragment" />
 </navigation>

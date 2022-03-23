@@ -1,5 +1,5 @@
 <resources>
-<!--    Login Registration Strings-->
+    <!--    Login Registration Strings-->
     <string name="app_name">ZWallet</string>
     <string name="text_login">Login</string>
     <string name="text_login_desc">Login to your existing account to access all the features in Zwallet.</string>
@@ -51,4 +51,8 @@
     <string name="currentPassword">Enter your current password</string>
     <string name="newPassword">Enter your new password</string>
     <string name="confirmPassword">Enter your new password again</string>
+
+
+    <!--    add Phone number-->
+    <string name="addphonenumber">Add at least one phone number for the transfer ID so you can start transfering your money to another user</string>
 </resources>
