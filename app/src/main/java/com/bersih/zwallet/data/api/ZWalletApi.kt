@@ -1,5 +1,6 @@
 package com.bersih.zwallet.data.api
 
+import android.provider.ContactsContract
 import com.bersih.zwallet.model.*
 import com.bersih.zwallet.model.request.*
 import retrofit2.Call
@@ -10,7 +11,10 @@ interface ZWalletApi {
     suspend fun login(@Body request: LoginRequest): ApiResponse<User>
 
     @POST("auth/signup")
-    fun register(@Body request: RegisterRequest): Call<ApiResponse<String>>
+    suspend fun register(@Body request: RegisterRequest): ApiResponse<String>
+
+    @GET("auth/activate/{email}/{otp}")
+    suspend fun setOtp(@Path("email") email: String, @Path("otp") otp: String): ApiResponse<String>
 
     @GET("home/getBalance")
     suspend fun getUserDetail(): ApiResponse<List<GetUserDetail>>

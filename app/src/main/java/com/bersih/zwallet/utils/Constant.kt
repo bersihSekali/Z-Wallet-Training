@@ -8,3 +8,4 @@ const val KEY_USER_TOKEN = "user_token"
 const val KEY_USER_REFRESH_TOKEN = "user_refresh_token"
 
 const val PREFS_NAME = "zwallet-prefs"
+const val KEY_REGIS_EMAIL = "user_register_email"

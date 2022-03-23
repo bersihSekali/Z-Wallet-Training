@@ -1,33 +1,33 @@
 package com.bersih.zwallet.ui.layout.auth.register
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentRegisterBinding
-import com.bersih.zwallet.model.ApiResponse
 import com.bersih.zwallet.model.request.RegisterRequest
-import com.bersih.zwallet.network.NetworkConfig
-import com.bersih.zwallet.ui.layout.auth.AuthActivity
+import com.bersih.zwallet.ui.layout.auth.login.LoginViewModel
+import com.bersih.zwallet.ui.widget.LoadingDialog
 import com.bersih.zwallet.utils.*
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.net.ssl.HttpsURLConnection
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
+    private val viewModel: LoginViewModel by activityViewModels()
+    private lateinit var loadingDialog: LoadingDialog
     private lateinit var prefs: SharedPreferences
 
     override fun onCreateView(
@@ -35,6 +35,8 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
+        loadingDialog = LoadingDialog(requireActivity())
+        prefs = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
         return binding.root
     }
 
@@ -42,6 +44,8 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         prefs = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
+
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         binding.inputPassword.addTextChangedListener {
             if (binding.inputPassword.text.length > 8) {
@@ -60,35 +64,39 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val registerRequest = RegisterRequest(
-                binding.inputUsername.text.toString(),
-                binding.inputEmail.text.toString(),
-                binding.inputPassword.text.toString()
+            val registerRequest = viewModel.register(
+                binding.inputUsername.toString(),
+                binding.inputEmail.toString(),
+                binding.inputPassword.toString()
             )
 
-            NetworkConfig(context).buildApi().register(registerRequest)
-                .enqueue(object : Callback<ApiResponse<String>> {
-                    override fun onResponse(
-                        call: Call<ApiResponse<String>>,
-                        response: Response<ApiResponse<String>>
-                    ) {
-                        if (response.body()?.status != HttpsURLConnection.HTTP_OK) {
-                            Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(context, "Register success! Please login with your new account!", Toast.LENGTH_SHORT).show()
+            prefs.edit {
+                putString(KEY_REGIS_EMAIL, binding.inputEmail.text.toString())
+                apply()
+            }
 
-                            Handler().postDelayed({
-                                val intent = Intent(activity, AuthActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            }, 2000)
+            registerRequest.observe(viewLifecycleOwner) {
+                when (it.state) {
+                    State.LOADING -> {
+                        loadingDialog.start("Processing your request ;)")
+                    }
+                    State.SUCCESS -> {
+                        if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                            loadingDialog.stop()
+                            Toast.makeText(context, "Check your email", Toast.LENGTH_SHORT).show()
+                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_otpFragment)
+                        } else {
+                            loadingDialog.stop()
+                            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
-
-                    override fun onFailure(call: Call<ApiResponse<String>>, t: Throwable) {
-                        Toast.makeText(context, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                    State.ERROR -> {
+                        loadingDialog.stop()
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
-                })
+                }
+            }
         }
     }
 }

@@ -31,6 +31,9 @@
         <action
             android:id="@+id/registerActionLogin"
             app:destination="@id/loginFragment"/>
+        <action
+            android:id="@+id/action_registerFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotFragment"
@@ -56,4 +59,8 @@
         android:id="@+id/createPinSuccessFragment2"
         android:name="com.bersih.zwallet.ui.layout.auth.pin.CreatePinSuccessFragment"
         android:label="CreatePinSuccessFragment" />
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.bersih.zwallet.ui.layout.auth.register.OtpFragment"
+        android:label="OtpFragment" />
 </navigation>
