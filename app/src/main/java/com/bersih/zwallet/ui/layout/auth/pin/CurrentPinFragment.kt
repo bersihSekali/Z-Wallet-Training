@@ -1,5 +1,6 @@
 package com.bersih.zwallet.ui.layout.auth.pin
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -42,8 +44,25 @@ class CurrentPinFragment : Fragment() {
         editTextOtp()
         deleteText()
 
+        binding.pin6.addTextChangedListener {
+            if (binding.pin6.text.length > 0) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth_active)
+                binding.btnContinue.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.pin6.text.isNullOrEmpty() || binding.pin5.text.isNullOrEmpty() ||
+                    binding.pin4.text.isNullOrEmpty() || binding.pin3.text.isNullOrEmpty() ||
+                    binding.pin2.text.isNullOrEmpty() || binding.pin1.text.isNullOrEmpty()) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth)
+                binding.btnContinue.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
+
         binding.btnContinue.setOnClickListener {
-            prepareData(view)
+            if (binding.pin6.text.length < 1){
+                Toast.makeText(context, "Enter your current PIN!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            } else {
+                prepareData(view)
+            }
         }
 
         binding.backBtn.setOnClickListener {

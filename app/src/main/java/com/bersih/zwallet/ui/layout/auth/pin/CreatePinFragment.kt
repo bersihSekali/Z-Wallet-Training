@@ -58,6 +58,11 @@ class CreatePinFragment : Fragment() {
         }
 
         binding.btnConfirm.setOnClickListener {
+            if (binding.pin6.text.length < 1) {
+                Toast.makeText(context, "Enter your new PIN!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val request = SetPinRequest(binding.pin1.text.toString() + binding.pin2.text.toString()
                             + binding.pin3.text.toString() + binding.pin4.text.toString() + binding.pin5.text.toString()
                             + binding.pin6.text.toString())

@@ -77,6 +77,8 @@
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/drawable/background_edit_text.xml" value="0.1" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/drawable/background_edit_text_after.xml" value="0.1" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_change_password.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_change_pin.xml" value="0.33" />
+        <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_current_pin.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_failed_transaction.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_login.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_reciever.xml" value="0.1" />

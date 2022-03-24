@@ -120,7 +120,7 @@
             android:layout_marginStart="5dp"
             style="@style/TextView.firstSizeText"
             android:hint="_"
-            android:inputType="text" />
+            android:inputType="numberPassword" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton

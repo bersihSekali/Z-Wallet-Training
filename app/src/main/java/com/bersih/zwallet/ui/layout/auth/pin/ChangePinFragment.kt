@@ -1,6 +1,7 @@
 package com.bersih.zwallet.ui.layout.auth.pin
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -45,11 +47,26 @@ class ChangePinFragment : Fragment() {
         editTextOtp()
         deleteText()
 
+        binding.pin6.addTextChangedListener {
+            if (binding.pin6.text.length > 0) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth_active)
+                binding.btnContinue.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.pin6.text.length < 1) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_auth)
+                binding.btnContinue.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
+
         binding.backBtn.setOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
 
         binding.btnContinue.setOnClickListener {
+            if (binding.pin6.text.length < 1){
+                Toast.makeText(context, "Enter your new PIN!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val request = SetPinRequest(binding.pin1.text.toString() + binding.pin2.text.toString()
                     + binding.pin3.text.toString() + binding.pin4.text.toString() + binding.pin5.text.toString()
                     + binding.pin6.text.toString())
