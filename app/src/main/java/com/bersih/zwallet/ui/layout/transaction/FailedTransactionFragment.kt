@@ -14,14 +14,21 @@ import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentFailedTransactionBinding
 import com.bersih.zwallet.databinding.FragmentSuccessTransactionBinding
 import com.bersih.zwallet.ui.layout.main.MainActivity
+import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
+import com.bersih.zwallet.utils.BASE_URL
+import com.bersih.zwallet.utils.Helper.formatPrice
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import javax.net.ssl.HttpsURLConnection
 
 class FailedTransactionFragment : Fragment() {
     private lateinit var binding: FragmentFailedTransactionBinding
     private val viewModel: TransactionViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,16 +76,28 @@ class FailedTransactionFragment : Fragment() {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
-            }, 2000)
+            }, 15000)
         }
 
         viewModel.selectedContact().observe(viewLifecycleOwner) {
             binding.textUsername.text = it.name
             binding.textPhone.text = it.phone
+            Glide.with(binding.imageContact)
+                .load(BASE_URL + it.image)
+                .apply(
+                    RequestOptions.circleCropTransform()
+                        .placeholder(R.drawable.ic_baseline_broken_image_24)
+                )
+                .into(binding.imageContact)
         }
 
-        viewModel.getBalance().observe(viewLifecycleOwner) {
-            binding.textBalanced.text = it.resource?.data?.get(0)?.balance.toString()
+        homeViewModel.getBalance().observe(viewLifecycleOwner) {
+//            binding.textBalanced.text = "Rp" + it.resource?.data?.get(0)?.balance.toString()
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                binding.apply {
+                    textBalanced.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                }
+            }
         }
     }
 }

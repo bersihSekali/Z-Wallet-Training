@@ -2,26 +2,30 @@ package com.bersih.zwallet.ui.layout.transaction
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentInputAmountBinding
 import com.bersih.zwallet.model.request.TransferRequest
+import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
 import com.bersih.zwallet.utils.BASE_URL
 import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DecimalFormat
+import javax.net.ssl.HttpsURLConnection
 
 @AndroidEntryPoint
 class InputAmountFragment : Fragment() {
     private lateinit var binding: FragmentInputAmountBinding
     private val viewModel: TransactionViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,9 +68,12 @@ class InputAmountFragment : Fragment() {
                 .into(binding.imageContact)
         }
 
-        viewModel.getBalance().observe(viewLifecycleOwner) {
-            binding.apply {
-                textBalanced.formatPrice(it.resource?.data?.get(0)?.balance.toString())
+        homeViewModel.getBalance().observe(viewLifecycleOwner) {
+//            binding.textBalanced.text = "Rp" + it.resource?.data?.get(0)?.balance.toString()
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                binding.apply {
+                    textBalanced.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                }
             }
         }
 

@@ -231,6 +231,7 @@
         app:layout_constraintTop_toBottomOf="@id/textTransferTo">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageContact"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_broken_image_24"

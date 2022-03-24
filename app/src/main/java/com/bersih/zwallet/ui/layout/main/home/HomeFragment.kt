@@ -100,7 +100,6 @@ class HomeFragment : Fragment() {
                         loadingIndicator.visibility = View.GONE
                         recyclerTransaction.visibility = View.VISIBLE
                     }
-                    Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
                 }
             }
         }

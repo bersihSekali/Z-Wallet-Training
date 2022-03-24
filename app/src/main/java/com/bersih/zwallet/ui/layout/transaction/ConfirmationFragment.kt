@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.bersih.zwallet.R
 import com.bersih.zwallet.databinding.FragmentConfirmationBinding
 import com.bersih.zwallet.databinding.FragmentInputAmountBinding
+import com.bersih.zwallet.ui.layout.main.home.HomeViewModel
 import com.bersih.zwallet.utils.BASE_URL
 import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bumptech.glide.Glide
@@ -20,11 +21,13 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import javax.net.ssl.HttpsURLConnection
 
 @AndroidEntryPoint
 class ConfirmationFragment : Fragment() {
     private lateinit var binding: FragmentConfirmationBinding
     private val viewModel: TransactionViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,9 +87,12 @@ class ConfirmationFragment : Fragment() {
             }
         }
 
-        viewModel.getBalance().observe(viewLifecycleOwner) {
-            binding.apply {
-                textBalanced.formatPrice(it.resource?.data?.get(0)?.balance.toString())
+        homeViewModel.getBalance().observe(viewLifecycleOwner) {
+//            binding.textBalanced.text = "Rp" + it.resource?.data?.get(0)?.balance.toString()
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                binding.apply {
+                    textBalanced.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                }
             }
         }
     }

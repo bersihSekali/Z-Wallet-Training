@@ -16,11 +16,7 @@ class LoginViewModel @Inject constructor(private val dataSource: ZWalletDataSour
         return dataSource.login(email, password)
     }
 
-    fun register(username: String, email: String, password: String): LiveData<Resource<ApiResponse<String>?>> {
-        return dataSource.register(username, email, password)
-    }
-
     fun setOtp(email: String, otp: String): LiveData<Resource<ApiResponse<String>?>> {
-        return  dataSource.setOtp(email, otp)
+        return dataSource.setOtp(email, otp)
     }
 }

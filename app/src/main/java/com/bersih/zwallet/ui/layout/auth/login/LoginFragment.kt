@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
                     State.SUCCESS -> {
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
                             with (preferences.edit()) {
-                                putBoolean(KEY_LOGGED_IN, false)
+                                putBoolean(KEY_LOGGED_IN, true)
                                 putString(KEY_USER_EMAIL, it.resource.data?.email)
                                 putString(KEY_USER_TOKEN, it.resource.data?.token)
                                 putString(KEY_USER_REFRESH_TOKEN, it.resource.data?.refreshToken)

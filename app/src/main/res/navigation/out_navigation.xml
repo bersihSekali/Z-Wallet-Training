@@ -29,11 +29,11 @@
         tools:layout="@layout/fragment_register">
 
         <action
-            android:id="@+id/registerActionLogin"
-            app:destination="@id/loginFragment"/>
-        <action
             android:id="@+id/action_registerFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotFragment"
