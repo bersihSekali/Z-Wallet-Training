@@ -81,6 +81,7 @@ class EditPhoneFragment : Fragment() {
                     }
                     State.ERROR -> {
                         loadingDialog.stop()
+                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }

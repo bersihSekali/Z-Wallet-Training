@@ -55,6 +55,7 @@ class ChangePasswordFragment : Fragment() {
 
         binding.btnContinue.setOnClickListener {
             if (binding.newPassword.text.toString() == binding.currentPassword.text.toString()) {
+                Toast.makeText(context, "Password must be different with current!", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             } else if (binding.newPassword.text.length < 8) {
                 Toast.makeText(context, "Password must be at least 8 character!", Toast.LENGTH_LONG).show()
