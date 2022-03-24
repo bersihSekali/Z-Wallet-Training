@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bersih.zwallet.R
 import com.bersih.zwallet.model.GetInvoice
 import com.bersih.zwallet.utils.BASE_URL
+import com.bersih.zwallet.utils.Helper.formatPrice
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.imageview.ShapeableImageView
@@ -24,7 +25,8 @@ class TransactionAdapter(private var data: List<GetInvoice>): RecyclerView.Adapt
         fun bindData(data: GetInvoice, context: Context, position: Int){
             name.text = data.name
             type.text = data.type
-            amount.text = data.amount.toString()
+//            amount.text = data.amount.toString()
+            amount.formatPrice(data.amount.toString())
             Glide.with(image)
                 .load(BASE_URL + data.image)
                 .apply(

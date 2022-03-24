@@ -92,12 +92,13 @@ class LoginFragment : Fragment() {
                                 loadingDialog.stop()
                             }
                         } else {
-//                            Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                            loadingDialog.stop()
+                            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
                     State.ERROR -> {
                         loadingDialog.stop()
-//                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Email / Password is invalid", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

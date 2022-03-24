@@ -70,12 +70,6 @@ class SuccessTransactionFragment : Fragment() {
                 val answer = formatter.format(date)
                 binding.textDate.text = answer
             }
-
-            Handler().postDelayed({
-                val intent = Intent(activity, MainActivity::class.java)
-                startActivity(intent)
-                activity?.finish()
-            }, 15000)
         }
 
         viewModel.selectedContact().observe(viewLifecycleOwner) {

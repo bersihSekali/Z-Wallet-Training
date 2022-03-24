@@ -80,10 +80,12 @@
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_change_pin.xml" value="0.33" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_current_pin.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_failed_transaction.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_home.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_login.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_reciever.xml" value="0.1" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_register.xml" value="0.15" />
         <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/fragment_success_transaction.xml" value="0.1" />
+        <entry key="..\:/Users/klin_agusta/Documents/klin/master/Z-Wallet-Training/app/src/main/res/layout/list_transaction_home.xml" value="0.16983695652173914" />
       </map>
     </option>
   </component>
