@@ -45,10 +45,10 @@ class LoginFragment : Fragment() {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         binding.inputPassword.addTextChangedListener {
-            if (binding.inputPassword.text.length > 8) {
+            if (binding.inputPassword.text.length >= 8) {
                 binding.btnLogin.setBackgroundResource(R.drawable.background_button_auth_active)
                 binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
-            } else if (binding.inputPassword.text.length <= 8) {
+            } else if (binding.inputPassword.text.length < 8) {
                 binding.btnLogin.setBackgroundResource(R.drawable.background_button_auth)
                 binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
             }
@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
                     State.SUCCESS -> {
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
                             with (preferences.edit()) {
-                                putBoolean(KEY_LOGGED_IN, true)
+                                putBoolean(KEY_LOGGED_IN, false)
                                 putString(KEY_USER_EMAIL, it.resource.data?.email)
                                 putString(KEY_USER_TOKEN, it.resource.data?.token)
                                 putString(KEY_USER_REFRESH_TOKEN, it.resource.data?.refreshToken)

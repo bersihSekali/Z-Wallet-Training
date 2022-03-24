@@ -42,6 +42,7 @@ class PinConfirmationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         editTextOtp()
+        deleteText()
 
         prepareData(view)
 
@@ -127,17 +128,55 @@ class PinConfirmationFragment : Fragment() {
                 }
             })
 
-            pin.get(i).setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
-                if (keyEvent.action !== KeyEvent.ACTION_DOWN) {
-                    return@OnKeyListener false
-                }
-                if (i == KeyEvent.KEYCODE_DEL && pin.get(i).getText().toString().isEmpty() && i != 0) {
-                    pin.get(i - 1).setText("")
-                    pin.get(i - 1).requestFocus()
-                    pin.get(i - 1).setBackgroundResource(R.drawable.background_edit_text)
-                }
-                false
-            })
+//            pin.get(i).setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
+//                if (keyEvent.action !== KeyEvent.ACTION_DOWN) {
+//                    return@OnKeyListener false
+//                }
+//                if (i == KeyEvent.KEYCODE_DEL && pin.get(i).getText().toString().isEmpty() && i != 0) {
+//                    pin.get(i - 1).setText("")
+//                    pin.get(i - 1).requestFocus()
+//                    pin.get(i - 1).setBackgroundResource(R.drawable.background_edit_text)
+//                }
+//                false
+//            })
+        }
+    }
+
+    private fun deleteText() {
+        binding.pin6.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin5.requestFocus()
+                binding.pin6.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.pin5.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin4.requestFocus()
+                binding.pin5.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.pin4.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin3.requestFocus()
+                binding.pin4.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.pin3.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin2.requestFocus()
+                binding.pin3.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.pin2.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin1.requestFocus()
+                binding.pin2.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.pin1.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.pin1.setBackgroundResource(R.drawable.background_edit_text)
+            }
         }
     }
 }

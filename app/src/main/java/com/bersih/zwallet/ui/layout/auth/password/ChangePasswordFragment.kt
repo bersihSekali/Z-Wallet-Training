@@ -56,6 +56,9 @@ class ChangePasswordFragment : Fragment() {
         binding.btnContinue.setOnClickListener {
             if (binding.newPassword.text.toString() == binding.currentPassword.text.toString()) {
                 return@setOnClickListener
+            } else if (binding.newPassword.text.length < 8) {
+                Toast.makeText(context, "Password must be at least 8 character!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
             } else {
                 val response = viewModel.changePassword(
                     ChangePasswordRequest(

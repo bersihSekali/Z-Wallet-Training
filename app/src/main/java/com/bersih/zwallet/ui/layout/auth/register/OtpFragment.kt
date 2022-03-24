@@ -11,6 +11,7 @@ import android.view.*
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
@@ -51,6 +52,7 @@ class OtpFragment : Fragment() {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         editTextOtp()
+        deleteText()
 
         binding.otp6.addTextChangedListener {
             if (binding.otp6.text.length > 0) {
@@ -133,17 +135,57 @@ class OtpFragment : Fragment() {
                 }
             })
 
-            otp.get(i).setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
-                if (keyEvent.action !== KeyEvent.ACTION_DOWN) {
-                    return@OnKeyListener false
-                }
-                if (i == KeyEvent.KEYCODE_DEL && otp.get(i).getText().toString().isEmpty() && i != 0) {
-                    otp.get(i - 1).setText("")
-                    otp.get(i - 1).requestFocus()
-                    otp.get(i - 1).setBackgroundResource(R.drawable.background_edit_text)
-                }
-                false
-            })
+//            otp.get(i).setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
+//                if (keyEvent.action !== KeyEvent.ACTION_DOWN) {
+//                    return@OnKeyListener false
+//                }
+//                if (i == KeyEvent.KEYCODE_DEL && otp.get(i).getText().toString().isEmpty() && i != 0) {
+//                    otp.get(i - 1).setText("")
+//                    otp.get(i - 1).requestFocus()
+//                    otp.get(i - 1).setBackgroundResource(R.drawable.background_edit_text)
+//                }
+//                false
+//            })
         }
     }
+
+    private fun deleteText() {
+        binding.otp6.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp5.requestFocus()
+                binding.otp6.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.otp5.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp4.requestFocus()
+                binding.otp5.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.otp4.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp3.requestFocus()
+                binding.otp4.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.otp3.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp2.requestFocus()
+                binding.otp3.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.otp2.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp1.requestFocus()
+                binding.otp2.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+        binding.otp1.doOnTextChanged { text, start, before, count ->
+            if (count < 1) {
+                binding.otp1.setBackgroundResource(R.drawable.background_edit_text)
+            }
+        }
+    }
+
+
 }

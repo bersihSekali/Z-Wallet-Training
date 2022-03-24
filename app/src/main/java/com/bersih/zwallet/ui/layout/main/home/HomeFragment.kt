@@ -91,7 +91,7 @@ class HomeFragment : Fragment() {
                             notifyDataSetChanged()
                         }
                     } else {
-                        Toast.makeText(context, it.resource?.messages, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                     }
                 }
                 State.ERROR -> {
