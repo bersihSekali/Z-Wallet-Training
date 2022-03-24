@@ -50,4 +50,7 @@ interface ZWalletApi {
 
     @PATCH("topup/topupbalance")
     suspend fun topUpBalance(@Body request: TopUpBalanceRequest): ApiResponse<String>
+
+    @PATCH("user/changeInfo")
+    suspend fun editPhone(@Body request: EditPhoneRequest): ApiResponse<String>
 }
